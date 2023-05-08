@@ -6,7 +6,7 @@ declare global {
 }
 
 // eslint-disable-next-line no-undef
-export const client = globalThis.prisma || new PrismaClient();
+const client = globalThis.prisma || new PrismaClient();
 
 // eslint-disable-next-line no-undef
 if (process.env.NODE_ENV !== 'production') globalThis.prisma = client;

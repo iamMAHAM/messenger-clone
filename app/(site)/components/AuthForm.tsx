@@ -4,9 +4,10 @@
 import Button from '../../components/Button';
 import Input from '../../components/inputs/Input';
 import { FC, useCallback, useState } from 'react';
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { FieldValues, SubmitHandler, set, useForm } from 'react-hook-form';
 import AuthSocialButton from './AuthSocial';
 import { BsGithub, BsGoogle } from 'react-icons/bs';
+import axios from 'axios';
 
 interface AuthFormProps {}
 
@@ -38,6 +39,7 @@ const AuthForm: FC<AuthFormProps> = () => {
 
     if (variant === 'REGISTER') {
       // register user
+      axios.post('/api/register', data).catch((_) => setIsloading(false));
     }
 
     if (variant === 'LOGIN') {

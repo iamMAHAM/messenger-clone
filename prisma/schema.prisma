@@ -11,13 +11,15 @@ datasource db {
 }
 
 model User {
-  id              String         @id @default(auto()) @map("_id") @db.ObjectId
-  name            String?
-  email           String?        @unique
-  emailVerified   DateTime?
-  hashedPassword  String?
-  createdAt       DateTime       @default(now())
-  updateAt        DateTime       @updatedAt
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  name           String?
+  email          String?   @unique
+  emailVerified  DateTime?
+  image          String?
+  hashedPassword String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
   conversationIds String[]       @db.ObjectId
   conversations   Conversation[] @relation(fields: [conversationIds], references: [id])
 
@@ -67,11 +69,12 @@ model Message {
   image     String?
   createdAt DateTime @default(now())
 
-  seenIds        String[]     @db.ObjectId
-  seen           User[]       @relation("Seen", fields: [seenIds], references: [id])
+  seenIds String[] @db.ObjectId
+  seen    User[]   @relation("Seen", fields: [seenIds], references: [id])
+
   conversationId String       @db.ObjectId
   conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
 
   senderId String @db.ObjectId
-  sender   User   @relation(fields: [senderId], references: [id])
+  sender   User   @relation(fields: [senderId], references: [id], onDelete: Cascade)
 }
