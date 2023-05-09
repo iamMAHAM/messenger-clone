@@ -1,13 +1,16 @@
 /* eslint-disable no-unused-vars */
 'use client';
 
+import axios from 'axios';
 import Button from '../../components/Button';
 import Input from '../../components/inputs/Input';
 import { FC, useCallback, useState } from 'react';
 import { FieldValues, SubmitHandler, set, useForm } from 'react-hook-form';
 import AuthSocialButton from './AuthSocial';
+import { signIn } from 'next-auth/react';
 import { BsGithub, BsGoogle } from 'react-icons/bs';
-import axios from 'axios';
+import { BuiltInProviderType } from 'next-auth/providers';
+import { toast } from 'react-hot-toast';
 
 interface AuthFormProps {}
 
@@ -39,17 +42,43 @@ const AuthForm: FC<AuthFormProps> = () => {
 
     if (variant === 'REGISTER') {
       // register user
-      axios.post('/api/register', data).catch((_) => setIsloading(false));
+      axios
+        .post('/api/register', data)
+        .catch(() => toast.error('Something went wrong'))
+        .finally(() => setIsloading(false));
     }
 
     if (variant === 'LOGIN') {
       // login user
+      signIn('credentials', { ...data, redirect: false })
+        .then((callback) => {
+          if (callback?.error) {
+            toast.error(callback.error);
+          }
+
+          if (callback?.ok && !callback.error) {
+            toast.success('Logged in successfully');
+          }
+        })
+        .catch(() => toast.error('Something went wrong'))
+        .finally(() => setIsloading(false));
     }
   };
 
-  const socialAction = (action: string) => {
+  const socialAction = (action: BuiltInProviderType) => {
     setIsloading(true);
-    // Next-auth social login
+    signIn(action, { redirect: false })
+      .then((callback) => {
+        if (callback?.error) {
+          toast.error('Invalid credentials');
+        }
+
+        if (callback?.ok && !callback.error) {
+          toast.success('Logged in successfully');
+        }
+      })
+      .catch(() => toast.error('Something went wrong'))
+      .finally(() => setIsloading(false));
   };
 
   return (
@@ -102,6 +131,7 @@ const AuthForm: FC<AuthFormProps> = () => {
               disabled={isLoading}
               fullWidth
               type="submit"
+              onClick={handleSubmit(onSubmit)}
             >
               {variant === 'LOGIN' ? 'Sign in' : 'Register'}
             </Button>
