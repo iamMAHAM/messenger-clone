@@ -1,22 +1,25 @@
 /* eslint-disable no-unused-vars */
 'use client';
 
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import Button from '../../components/Button';
 import Input from '../../components/inputs/Input';
-import { FC, useCallback, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import { FieldValues, SubmitHandler, set, useForm } from 'react-hook-form';
 import AuthSocialButton from './AuthSocial';
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import { BsGithub, BsGoogle } from 'react-icons/bs';
 import { BuiltInProviderType } from 'next-auth/providers';
 import { toast } from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 interface AuthFormProps {}
 
 type Variant = 'LOGIN' | 'REGISTER';
 
 const AuthForm: FC<AuthFormProps> = () => {
+  const session = useSession();
+  const router = useRouter();
   const [variant, setVariant] = useState<Variant>('LOGIN');
   const [isLoading, setIsloading] = useState<boolean>(false);
 
@@ -24,6 +27,13 @@ const AuthForm: FC<AuthFormProps> = () => {
     setVariant(variant === 'LOGIN' ? 'REGISTER' : 'LOGIN');
     console.log('clicked : ', variant);
   }, [variant]);
+
+  useEffect(() => {
+    if (session?.status === 'authenticated') {
+      console.log('user is authenticated');
+      router.replace('/users');
+    }
+  }, [session?.status, router]);
 
   const {
     register,
@@ -44,7 +54,25 @@ const AuthForm: FC<AuthFormProps> = () => {
       // register user
       axios
         .post('/api/register', data)
-        .catch(() => toast.error('Something went wrong'))
+        .then((res) => {
+          if (res.status === 201) {
+            toast.success('Registered successfully');
+            signIn('credentials', { ...data, redirect: false });
+            // setVariant('LOGIN');
+          }
+        })
+
+        .catch((e: AxiosError) => {
+          if (
+            typeof e.response?.data === 'string' &&
+            e.response?.data.includes('already exists')
+          ) {
+            toast.error('User already exists');
+          } else {
+            toast.error('Something went wrong');
+          }
+        })
+
         .finally(() => setIsloading(false));
     }
 

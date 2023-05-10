@@ -23,7 +23,7 @@ export const POST = async (req: Request) => {
     return NextResponse.json(user, { status: 201 });
   } catch (error: any) {
     if (error.code === 'P2002') {
-      return new NextResponse('Email already exists', { status: 400 });
+      return new NextResponse('Email already exists', { status: 401 });
     }
     console.error('REGISTRATION_ERROR : ', error);
     return new NextResponse('Internal server error', { status: 500 });
