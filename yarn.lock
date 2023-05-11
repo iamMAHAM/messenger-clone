@@ -704,6 +704,13 @@ cookie@^0.5.0:
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.5.0.tgz#d1f5d71adec6558c58f389987c366aa47e994f8b"
   integrity sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==
 
+copy-anything@^3.0.2:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/copy-anything/-/copy-anything-3.0.4.tgz#a9675339d260f7cec4a58e401565e302c15d9a17"
+  integrity sha512-MaQ9FwzlZ/KLeVCLhzI3rZw0EhrIryfZa3AyT4agVybR0DjlkDHA8898lamLD6kfkf9MMn8D+zDAUR4+GxaymQ==
+  dependencies:
+    is-what "^4.1.8"
+
 cross-spawn@^7.0.2, cross-spawn@^7.0.3:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
@@ -1530,6 +1537,13 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
+hoist-non-react-statics@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
+  integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
+  dependencies:
+    react-is "^16.7.0"
+
 https-proxy-agent@^5.0.0:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-5.0.1.tgz#c59ef224a04fe8b754f3db0063a25ea30d0005d6"
@@ -1781,6 +1795,11 @@ is-weakset@^2.0.1:
   dependencies:
     call-bind "^1.0.2"
     get-intrinsic "^1.1.1"
+
+is-what@^4.1.8:
+  version "4.1.9"
+  resolved "https://registry.yarnpkg.com/is-what/-/is-what-4.1.9.tgz#f834685d9ffd63f7e56cea3d48b14910c03b8010"
+  integrity sha512-I3FU0rkVvwhgLLEs6iITwZ/JaLXe7tQcHyzupXky8jigt1vu4KM0UOqDr963j36JRvJ835EATVIm6MnGz/i1/g==
 
 is-wsl@^2.2.0:
   version "2.2.0"
@@ -2039,6 +2058,13 @@ next-auth@^4.22.1:
     preact "^10.6.3"
     preact-render-to-string "^5.1.19"
     uuid "^8.3.2"
+
+next-superjson-plugin@^0.5.7:
+  version "0.5.7"
+  resolved "https://registry.yarnpkg.com/next-superjson-plugin/-/next-superjson-plugin-0.5.7.tgz#9d0b3a32946f85af7423e835d7396f18e1b30507"
+  integrity sha512-bkF49B/Pcf0GCh10vXL+hjBodC404FgzEsl3wtrjwqvTkoWDnqBOgP2KqWR9sF1tz4MSMlo872Q4Srl/2XRFWw==
+  dependencies:
+    hoist-non-react-statics "^3.3.2"
 
 next@13.4.1:
   version "13.4.1"
@@ -2478,7 +2504,7 @@ react-icons@^4.8.0:
   resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.8.0.tgz#621e900caa23b912f737e41be57f27f6b2bff445"
   integrity sha512-N6+kOLcihDiAnj5Czu637waJqSnwlMNROzVZMhfX68V/9bu9qHaMIJC4UdozWoOk57gahFCNHwVvWzm0MTzRjg==
 
-react-is@^16.13.1:
+react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -2770,6 +2796,13 @@ sucrase@^3.32.0:
     mz "^2.7.0"
     pirates "^4.0.1"
     ts-interface-checker "^0.1.9"
+
+superjson@^1.12.3:
+  version "1.12.3"
+  resolved "https://registry.yarnpkg.com/superjson/-/superjson-1.12.3.tgz#383aacfd795c6eef24c383c70154c6cbbcbfb31a"
+  integrity sha512-0j+U70KUtP8+roVPbwfqkyQI7lBt7ETnuA7KXbTDX3mCKiD/4fXs2ldKSMdt0MCfpTwiMxo20yFU3vu6ewETpQ==
+  dependencies:
+    copy-anything "^3.0.2"
 
 supports-color@^7.1.0:
   version "7.2.0"

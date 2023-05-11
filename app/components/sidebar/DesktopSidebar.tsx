@@ -1,13 +1,21 @@
 'use client';
 
 import useRoutes from '@/hooks/useRoutes';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import DesktopItem from './DesktopItem';
+import { User } from '@prisma/client';
+import Avatar from '../Avatar';
 
-interface DesktopSidebarProps {}
+interface DesktopSidebarProps {
+  currentUser: User;
+}
 
-const DesktopSidebar: FC<DesktopSidebarProps> = () => {
+const DesktopSidebar: FC<DesktopSidebarProps> = ({ currentUser }) => {
   const routes = useRoutes();
+  // eslint-disable-next-line no-unused-vars
+  const [_, setIsOpen] = useState<boolean>(false);
+
+  console.log('current user : ', currentUser);
   return (
     <div
       className="
@@ -39,6 +47,26 @@ const DesktopSidebar: FC<DesktopSidebarProps> = () => {
             />
           ))}
         </ul>
+      </nav>
+      <nav
+        className="
+          flex
+          flex-col
+          items-center
+          mt-4
+          justify-beetween
+        "
+      >
+        <div
+          onClick={() => setIsOpen(true)}
+          className="
+          cursor-pointer
+          hover:opacity-75
+          transition
+        "
+        >
+          <Avatar user={currentUser} />
+        </div>
       </nav>
     </div>
   );
