@@ -1,4 +1,4 @@
-import prisma from '@libs/prismadb';
+import prisma from '@/libs/prisma';
 import getSession from './getSession';
 
 const getUsers = async () => {
@@ -22,6 +22,7 @@ const getUsers = async () => {
 
     return users;
   } catch (e: any) {
+    console.error(e);
     return [];
   }
 };
