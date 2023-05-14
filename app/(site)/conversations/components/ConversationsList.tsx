@@ -6,7 +6,7 @@ interface ConversationsListProps {
 }
 
 const ConversationsList: FC<ConversationsListProps> = () => {
-  return <div>ConversationsList</div>;
+  return <div>add conversationBox here</div>;
 };
 
 export default ConversationsList;
