@@ -1,5 +1,6 @@
 import { User } from '@prisma/client';
 import { FC } from 'react';
+
 import UserBox from './UserBox';
 
 interface UserListProps {

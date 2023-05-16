@@ -2,16 +2,17 @@
 'use client';
 
 import axios, { AxiosError } from 'axios';
+import { useRouter } from 'next/navigation';
+import { BuiltInProviderType } from 'next-auth/providers';
+import { signIn, useSession } from 'next-auth/react';
+import { FC, useCallback, useEffect, useState } from 'react';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
+import { BsGithub, BsGoogle } from 'react-icons/bs';
+
+import AuthSocialButton from './AuthSocial';
 import Button from '../../components/Button';
 import Input from '../../components/inputs/Input';
-import { FC, useCallback, useEffect, useState } from 'react';
-import { FieldValues, SubmitHandler, set, useForm } from 'react-hook-form';
-import AuthSocialButton from './AuthSocial';
-import { signIn, useSession } from 'next-auth/react';
-import { BsGithub, BsGoogle } from 'react-icons/bs';
-import { BuiltInProviderType } from 'next-auth/providers';
-import { toast } from 'react-hot-toast';
-import { useRouter } from 'next/navigation';
 
 interface AuthFormProps {}
 

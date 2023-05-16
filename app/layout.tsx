@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
 import './globals.css';
 import { FC, PropsWithChildren } from 'react';
-import ToastContext from './context/ToastContext';
+
 import AuthContext from './context/AuthContext';
+import ToastContext from './context/ToastContext';
 
 export const metadata: Metadata = {
   title: 'Messenger clone',

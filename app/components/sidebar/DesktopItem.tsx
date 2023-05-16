@@ -1,9 +1,9 @@
 'use client';
 
+import clsx from 'clsx';
+import Link from 'next/link';
 import { FC } from 'react';
 import { IconType } from 'react-icons';
-import Link from 'next/link';
-import clsx from 'clsx';
 
 interface DesktopItemProps {
   label: string;
@@ -20,11 +20,9 @@ const DesktopItem: FC<DesktopItemProps> = ({
   active,
   onClick,
 }) => {
-  const handleClick = onClick ?? void 0;
-
   return (
     <li
-      onClick={handleClick}
+      onClick={onClick}
       key={label}
     >
       <Link

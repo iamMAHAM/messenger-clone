@@ -1,7 +1,8 @@
-import { Logo } from '../assets';
 import Image from 'next/image';
 import { FC } from 'react';
+
 import AuthForm from './components/AuthForm';
+import { Logo } from '../assets';
 
 interface HomeProps {}
 

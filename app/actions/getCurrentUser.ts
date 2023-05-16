@@ -1,4 +1,5 @@
 import getSession from './getSession';
+
 import prisma from '@/libs/prisma';
 
 const getCurrentUser = async () => {
@@ -17,6 +18,7 @@ const getCurrentUser = async () => {
 
     return currentUser;
   } catch (e: any) {
+    console.error(e);
     return null;
   }
 };

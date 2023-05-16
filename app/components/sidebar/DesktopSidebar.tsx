@@ -1,10 +1,12 @@
 'use client';
 
-import useRoutes from '@/hooks/useRoutes';
-import { FC, useState } from 'react';
-import DesktopItem from './DesktopItem';
 import { User } from '@prisma/client';
+import { FC, useState } from 'react';
+
+import DesktopItem from './DesktopItem';
 import Avatar from '../Avatar';
+
+import useRoutes from '@/hooks/useRoutes';
 
 interface DesktopSidebarProps {
   currentUser: User;
@@ -12,7 +14,7 @@ interface DesktopSidebarProps {
 
 const DesktopSidebar: FC<DesktopSidebarProps> = ({ currentUser }) => {
   const routes = useRoutes();
-  // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   const [_, setIsOpen] = useState<boolean>(false);
 
   console.log('current user : ', currentUser);

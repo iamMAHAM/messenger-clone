@@ -1,6 +1,7 @@
-import { NextResponse } from 'next/server';
-import getCurrentUser from '@/actions/getCurrentUser';
 import prisma from '@libs/prisma';
+import { NextResponse } from 'next/server';
+
+import getCurrentUser from '@/actions/getCurrentUser';
 
 export const GET = () => {
   const user = getCurrentUser();
@@ -84,6 +85,7 @@ export const POST = async (req: Request) => {
 
     return NextResponse.json(newConversation);
   } catch (error: any) {
+    console.error(error);
     return new NextResponse('Internal Server Error', { status: 500 });
   }
 };

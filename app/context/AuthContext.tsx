@@ -1,7 +1,7 @@
 'use client';
 
-import { FC, PropsWithChildren } from 'react';
 import { SessionProvider } from 'next-auth/react';
+import { FC, PropsWithChildren } from 'react';
 
 interface AuthContextProps extends PropsWithChildren {}
 

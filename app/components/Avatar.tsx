@@ -1,9 +1,10 @@
 'use client';
 
-import { Placeholder } from '@/assets';
 import { User } from '@prisma/client';
 import Image from 'next/image';
 import { FC } from 'react';
+
+import { Placeholder } from '@/assets';
 
 interface AvatarProps {
   user: User;

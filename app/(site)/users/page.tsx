@@ -1,5 +1,6 @@
-import EmptyState from '@/components/EmptyState';
 import { FC } from 'react';
+
+import EmptyState from '@/components/EmptyState';
 
 interface UsersProps {}
 
