@@ -1,6 +1,6 @@
-import getCurrentUser from './getCurrentUser';
-
 import prisma from '@/libs/prisma';
+
+import getCurrentUser from './getCurrentUser';
 
 const getConversations = async () => {
   const currentUser = await getCurrentUser();

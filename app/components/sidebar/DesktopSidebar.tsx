@@ -3,10 +3,10 @@
 import { User } from '@prisma/client';
 import { FC, useState } from 'react';
 
+import useRoutes from '@/hooks/useRoutes';
+
 import DesktopItem from './DesktopItem';
 import Avatar from '../Avatar';
-
-import useRoutes from '@/hooks/useRoutes';
 
 interface DesktopSidebarProps {
   currentUser: User;

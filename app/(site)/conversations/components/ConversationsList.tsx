@@ -4,10 +4,10 @@ import { useRouter } from 'next/navigation';
 import { FC, useState } from 'react';
 import { MdOutlineGroupAdd } from 'react-icons/md';
 
-import ConversationBox from './ConversationBox';
-
 import useConversation from '@/hooks/useConversation';
 import { FullConversationType } from '@/types';
+
+import ConversationBox from './ConversationBox';
 
 interface ConversationsListProps {
   initialConversations: FullConversationType[];

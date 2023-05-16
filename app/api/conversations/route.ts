@@ -1,7 +1,7 @@
-import prisma from '@libs/prisma';
 import { NextResponse } from 'next/server';
 
 import getCurrentUser from '@/actions/getCurrentUser';
+import prisma from '@libs/prisma';
 
 export const GET = () => {
   const user = getCurrentUser();

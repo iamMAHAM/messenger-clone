@@ -1,9 +1,9 @@
 import { FC, PropsWithChildren, use } from 'react';
 
-import ConversationsList from './components/ConversationsList';
-
 import getConversations from '@/actions/getConversations';
 import SideBar from '@/components/sidebar/Sidebar';
+
+import ConversationsList from './components/ConversationsList';
 
 interface ConversionsLayoutProps extends PropsWithChildren {}
 

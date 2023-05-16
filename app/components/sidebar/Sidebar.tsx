@@ -1,9 +1,9 @@
 import { FC, PropsWithChildren, use } from 'react';
 
+import getCurrentUser from '@/actions/getCurrentUser';
+
 import DesktopSidebar from './DesktopSidebar';
 import MobileFooter from './MobileFooter';
-
-import getCurrentUser from '@/actions/getCurrentUser';
 
 interface SideBarProps extends PropsWithChildren {}
 
