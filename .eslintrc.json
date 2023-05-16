@@ -1,7 +1,17 @@
 {
   "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "next/core-web-vitals"
+    "universe",
+    "universe/shared/typescript-analysis"
+    // "eslint:recommended",
+    // "plugin:react/recommended",
+    // "next/core-web-vitals"
+  ],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.d.ts"],
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      }
+    }
   ]
 }

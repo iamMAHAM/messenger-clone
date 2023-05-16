@@ -1,7 +1,8 @@
-import getUsers from '@/actions/getUsers';
-import UserList from '@/(site)/users/components/UserList';
-import SideBar from '@/components/sidebar/Sidebar';
 import { FC, PropsWithChildren, use } from 'react';
+
+import UserList from '@/(site)/users/components/UserList';
+import getUsers from '@/actions/getUsers';
+import SideBar from '@/components/sidebar/Sidebar';
 
 interface UsersLayoutProps extends PropsWithChildren {}
 
