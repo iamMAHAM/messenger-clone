@@ -4,6 +4,10 @@ import getConversationById from '@/actions/getConversationById';
 import getMessages from '@/actions/getMessages';
 import EmptyState from '@/components/EmptyState';
 
+import Body from './components/Body';
+import Form from './components/Form';
+import Header from './components/Header';
+
 interface ConversatonIdProps {
   params: {
     conversationId: string;
@@ -29,9 +33,9 @@ const ConversatonId: FC<ConversatonIdProps> = ({ params }) => {
   return (
     <div className="lg:pl-80 h-full">
       <div className="h-full flex flex-col">
-        {/* <Header conversation={conversation} />
+        <Header conversation={conversation} />
         <Body initialMessages={messages} />
-        <Form /> */}
+        <Form />
       </div>
     </div>
   );

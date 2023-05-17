@@ -14,7 +14,6 @@ const UserList: FC<UserListProps> = ({ users }) => {
     fixed 
     inset-y-0 
     pb-20
-    bg-gray-50
     lg:pb-0 
     lg:left-20 
     lg:w-80

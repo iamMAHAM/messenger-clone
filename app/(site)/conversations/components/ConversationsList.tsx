@@ -30,7 +30,6 @@ const ConversationsList: FC<ConversationsListProps> = ({
       lg:left-20 
       lg:w-80
       lg:block
-      bg-white
       overflow-y-auto 
       border-r 
       border-gray-200 
