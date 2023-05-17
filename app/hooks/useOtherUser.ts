@@ -2,23 +2,24 @@ import { User } from '@prisma/client';
 import { useSession } from 'next-auth/react';
 import { useMemo } from 'react';
 
-import getSession from '@/actions/getSession';
 import { FullConversationType } from '@/types';
 
-const useOtherUsers = async (
+const useOtherUser = (
   conversation: FullConversationType | { users: User[] }
 ) => {
   const session = useSession();
 
-  const otherUsers = useMemo(() => {
+  const otherUser = useMemo(() => {
     const currentUserEmail = session?.data?.user?.email;
 
-    const otherUsers = conversation.users.filter(
+    const otherUser = conversation.users.filter(
       (u) => u.email !== currentUserEmail
     );
 
-    return otherUsers;
+    return otherUser[0];
   }, [conversation.users, session?.data?.user?.email]);
+
+  return otherUser;
 };
 
-export default userOtherUsers;
+export default useOtherUser;

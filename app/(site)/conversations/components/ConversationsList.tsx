@@ -1,6 +1,5 @@
 'use client';
 import clsx from 'clsx';
-import { useRouter } from 'next/navigation';
 import { FC, useState } from 'react';
 import { MdOutlineGroupAdd } from 'react-icons/md';
 
@@ -16,8 +15,7 @@ interface ConversationsListProps {
 const ConversationsList: FC<ConversationsListProps> = ({
   initialConversations,
 }) => {
-  const [conversations, setConversations] = useState(initialConversations);
-  const router = useRouter();
+  const [conversations] = useState(initialConversations);
 
   const { conversationId, isOpen } = useConversation();
 
