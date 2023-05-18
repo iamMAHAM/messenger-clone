@@ -72,7 +72,7 @@ const ConversationBox: FC<ConversationBoxProps> = ({
       <div className="min-0 flex-1 focus:outline-none">
         <div className="flex justify-between items-center">
           <p className="text-md font-medium capitalize">
-            {conversation.name ?? otherUser.name?.toLocaleLowerCase()}
+            {conversation.name ?? otherUser?.name?.toLocaleLowerCase()}
           </p>
           {lastMessage.createdAt && (
             <p
