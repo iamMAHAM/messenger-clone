@@ -12,7 +12,10 @@ export const POST = async (req: Request) => {
       return new NextResponse('Missing parameters', { status: 400 });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(
+      password,
+      await bcrypt.genSalt(10)
+    );
 
     const user = await prisma.user.create({
       data: {
@@ -21,6 +24,7 @@ export const POST = async (req: Request) => {
         hashedPassword,
       },
     });
+
     return NextResponse.json(user, { status: 201 });
   } catch (error: any) {
     if (error.code === 'P2002') {

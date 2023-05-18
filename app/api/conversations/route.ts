@@ -3,14 +3,6 @@ import { NextResponse } from 'next/server';
 import getCurrentUser from '@/actions/getCurrentUser';
 import prisma from '@libs/prisma';
 
-export const GET = () => {
-  const user = getCurrentUser();
-  if (!user) {
-    return NextResponse.redirect('/login');
-  }
-  return NextResponse.next();
-};
-
 export const POST = async (req: Request) => {
   try {
     const currentUser = await getCurrentUser();
@@ -18,7 +10,6 @@ export const POST = async (req: Request) => {
 
     const { userId, isGroup, members, name } = body;
 
-    console.log(currentUser);
     if (!currentUser?.id || !currentUser.email) {
       return new NextResponse('Unauthorized', { status: 401 });
     }
