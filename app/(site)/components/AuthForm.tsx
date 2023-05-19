@@ -26,12 +26,10 @@ const AuthForm: FC<AuthFormProps> = () => {
 
   const toggleVariant = useCallback(() => {
     setVariant(variant === 'LOGIN' ? 'REGISTER' : 'LOGIN');
-    console.log('clicked : ', variant);
   }, [variant]);
 
   useEffect(() => {
     if (session?.status === 'authenticated') {
-      console.log('user is authenticated');
       router.replace('/users');
     }
   }, [session?.status, router]);

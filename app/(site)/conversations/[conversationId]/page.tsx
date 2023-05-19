@@ -18,9 +18,6 @@ const ConversatonId: FC<ConversatonIdProps> = ({ params }) => {
   const messages = use(getMessages(params.conversationId));
   const conversation = use(getConversationById(params.conversationId));
 
-  console.log('conversation : ', conversation);
-  console.log('messages : ', messages);
-
   if (!conversation) {
     return (
       <div className="lg:pl-80 h-full">

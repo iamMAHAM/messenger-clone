@@ -17,7 +17,6 @@ const DesktopSidebar: FC<DesktopSidebarProps> = ({ currentUser }) => {
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   const [_, setIsOpen] = useState<boolean>(false);
 
-  console.log('current user : ', currentUser);
   return (
     <div
       className="
