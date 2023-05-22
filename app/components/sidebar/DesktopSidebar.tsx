@@ -6,6 +6,7 @@ import { FC, useState } from 'react';
 import useRoutes from '@/hooks/useRoutes';
 
 import DesktopItem from './DesktopItem';
+import SettingsModal from './SettingsModal';
 import Avatar from '../Avatar';
 
 interface DesktopSidebarProps {
@@ -15,11 +16,17 @@ interface DesktopSidebarProps {
 const DesktopSidebar: FC<DesktopSidebarProps> = ({ currentUser }) => {
   const routes = useRoutes();
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-  const [_, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <div
-      className="
+    <>
+      <SettingsModal
+        currentUser={currentUser}
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+      />
+      <div
+        className="
       hidden 
       lg:fixed 
       lg:inset-y-0 
@@ -35,41 +42,42 @@ const DesktopSidebar: FC<DesktopSidebarProps> = ({ currentUser }) => {
       lg:flex-col
       justify-between
     "
-    >
-      <nav className="mt-4 flex flex-col justify-between">
-        <ul
-          role="list"
-          className="flex flex-col items-center space-y-1"
-        >
-          {routes.map((route) => (
-            <DesktopItem
-              {...route}
-              key={route.label}
-            />
-          ))}
-        </ul>
-      </nav>
-      <nav
-        className="
+      >
+        <nav className="mt-4 flex flex-col justify-between">
+          <ul
+            role="list"
+            className="flex flex-col items-center space-y-1"
+          >
+            {routes.map((route) => (
+              <DesktopItem
+                {...route}
+                key={route.label}
+              />
+            ))}
+          </ul>
+        </nav>
+        <nav
+          className="
           flex
           flex-col
           items-center
           mt-4
           justify-beetween
         "
-      >
-        <div
-          onClick={() => setIsOpen(true)}
-          className="
-          cursor-pointer
-          hover:opacity-75
-          transition
-        "
         >
-          <Avatar user={currentUser} />
-        </div>
-      </nav>
-    </div>
+          <div
+            onClick={() => setIsOpen(true)}
+            className="
+            cursor-pointer
+            hover:opacity-75
+            transition
+          "
+          >
+            <Avatar user={currentUser} />
+          </div>
+        </nav>
+      </div>
+    </>
   );
 };
 
