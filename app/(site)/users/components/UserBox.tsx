@@ -14,7 +14,7 @@ interface UserBoxProps {
 const UserBox: FC<UserBoxProps> = ({ data }) => {
   const router = useRouter();
   // eslint-disable-next-line no-unused-vars
-  const [isLoading, setIsLoading] = useState(false);
+  const [, setIsLoading] = useState(false);
 
   const handleClick = useCallback(() => {
     setIsLoading(true);
