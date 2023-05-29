@@ -49,7 +49,7 @@ const UserBox: FC<UserBoxProps> = ({ data }) => {
         "
       >
         <Avatar user={data} />
-        <div className="min-w-0 flex-1">
+        <div className="min-w-0 flex-1 focus:h">
           <div className="focus:outline-none">
             <span
               className="absolute inset-0"
