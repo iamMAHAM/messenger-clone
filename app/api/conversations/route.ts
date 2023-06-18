@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 
 import getCurrentUser from '@/actions/getCurrentUser';
+import { pusherServer } from '@/libs/pusher';
 import prisma from '@libs/prisma';
 
 export const POST = async (req: Request) => {
@@ -72,6 +73,12 @@ export const POST = async (req: Request) => {
       include: {
         users: true,
       },
+    });
+
+    newConversation.users.forEach((user) => {
+      if (user.email) {
+        pusherServer.trigger(user.email, 'conversation:new', newConversation);
+      }
     });
 
     return NextResponse.json(newConversation);
